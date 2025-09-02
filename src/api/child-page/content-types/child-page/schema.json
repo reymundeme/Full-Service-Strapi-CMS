@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "pages",
+  "collectionName": "child_pages",
   "info": {
-    "singularName": "page",
-    "pluralName": "pages",
-    "displayName": "Page"
+    "singularName": "child-page",
+    "pluralName": "child-pages",
+    "displayName": "ChildPage"
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +12,7 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "text"
+      "type": "string"
     },
     "slug": {
       "type": "uid",
@@ -45,11 +45,11 @@
     "jsonLd": {
       "type": "json"
     },
-    "child_pages": {
+    "page": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::child-page.child-page",
-      "mappedBy": "page"
+      "relation": "manyToOne",
+      "target": "api::page.page",
+      "inversedBy": "child_pages"
     }
   }
 }
