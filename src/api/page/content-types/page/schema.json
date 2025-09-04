@@ -50,6 +50,14 @@
       "relation": "oneToMany",
       "target": "api::child-page.child-page",
       "mappedBy": "page"
+    },
+    "sections": {
+      "type": "dynamiczone",
+      "components": [
+        "sections.hero",
+        "sections.section1",
+        "sections.section2"
+      ]
     }
   }
 }
