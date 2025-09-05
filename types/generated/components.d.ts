@@ -79,6 +79,8 @@ export interface SectionsSection1 extends Struct.ComponentSchema {
     button_url: Schema.Attribute.String;
     content: Schema.Attribute.RichText;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -95,6 +97,8 @@ export interface SectionsSection2 extends Struct.ComponentSchema {
     button_url: Schema.Attribute.String;
     content: Schema.Attribute.RichText;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
   };
 }
 

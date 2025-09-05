@@ -33,6 +33,12 @@
     },
     "button_url": {
       "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
     }
   },
   "config": {}
