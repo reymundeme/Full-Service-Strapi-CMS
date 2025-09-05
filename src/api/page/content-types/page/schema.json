@@ -56,7 +56,8 @@
       "components": [
         "sections.hero",
         "sections.section1",
-        "sections.section2"
+        "sections.section2",
+        "sections.item-section"
       ]
     }
   }

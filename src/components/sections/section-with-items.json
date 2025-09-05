@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_section_with_items",
+  "info": {
+    "displayName": "sectionWithItems"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "subheading": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_sections_item_contents",
+  "info": {
+    "displayName": "item-content"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "buttonText": {
+      "type": "string"
+    },
+    "buttonURL": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

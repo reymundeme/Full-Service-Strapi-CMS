@@ -16,6 +16,56 @@ export interface SectionsHero extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsItem extends Struct.ComponentSchema {
+  collectionName: 'components_sections_items';
+  info: {
+    displayName: 'item';
+  };
+  attributes: {
+    ButtonText: Schema.Attribute.String;
+    ButtonURL: Schema.Attribute.String;
+    description: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SectionsItemContent extends Struct.ComponentSchema {
+  collectionName: 'components_sections_item_contents';
+  info: {
+    displayName: 'item-content';
+  };
+  attributes: {
+    buttonText: Schema.Attribute.String;
+    buttonURL: Schema.Attribute.String;
+    description: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SectionsItemSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_item_sections';
+  info: {
+    displayName: 'item-section';
+  };
+  attributes: {
+    item: Schema.Attribute.Component<'sections.item-content', true>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SectionsSectionWithItems extends Struct.ComponentSchema {
+  collectionName: 'components_sections_section_with_items';
+  info: {
+    displayName: 'sectionWithItems';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    subheading: Schema.Attribute.String;
+  };
+}
+
 export interface SectionsSection1 extends Struct.ComponentSchema {
   collectionName: 'components_sections_section1s';
   info: {
@@ -60,6 +110,10 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'sections.hero': SectionsHero;
+      'sections.item': SectionsItem;
+      'sections.item-content': SectionsItemContent;
+      'sections.item-section': SectionsItemSection;
+      'sections.section-with-items': SectionsSectionWithItems;
       'sections.section1': SectionsSection1;
       'sections.section2': SectionsSection2;
       'sections.sections': SectionsSections;

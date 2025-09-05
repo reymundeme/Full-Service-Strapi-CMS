@@ -442,7 +442,12 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     ogImage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
-      ['sections.hero', 'sections.section1', 'sections.section2']
+      [
+        'sections.hero',
+        'sections.section1',
+        'sections.section2',
+        'sections.item-section',
+      ]
     >;
     seoDescription: Schema.Attribute.Text &
       Schema.Attribute.SetMinMaxLength<{
