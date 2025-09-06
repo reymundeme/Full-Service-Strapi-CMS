@@ -37,13 +37,16 @@ export interface SectionsItemContent extends Struct.ComponentSchema {
   };
   attributes: {
     background: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
+      'images' | 'files' | 'videos' | 'audios',
+      true
     >;
     buttonText: Schema.Attribute.String;
     buttonURL: Schema.Attribute.String;
     description: Schema.Attribute.RichText;
-    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    test: Schema.Attribute.String;
+    icon: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     title: Schema.Attribute.String;
   };
 }

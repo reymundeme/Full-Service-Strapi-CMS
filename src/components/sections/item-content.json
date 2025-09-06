@@ -11,25 +11,15 @@
     "description": {
       "type": "richtext"
     },
-    "icon": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "buttonText": {
       "type": "string"
     },
     "buttonURL": {
       "type": "string"
     },
-    "background": {
+    "icon": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "allowedTypes": [
         "images",
         "files",
@@ -37,8 +27,15 @@
         "audios"
       ]
     },
-    "test": {
-      "type": "string"
+    "background": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   },
   "config": {}
