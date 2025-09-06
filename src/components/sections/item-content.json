@@ -36,6 +36,9 @@
         "videos",
         "audios"
       ]
+    },
+    "test": {
+      "type": "string"
     }
   },
   "config": {}
