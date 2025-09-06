@@ -96,7 +96,9 @@ export interface SectionsSection2 extends Struct.ComponentSchema {
       'images' | 'files' | 'videos' | 'audios'
     >;
     button_text: Schema.Attribute.String;
+    button_text_2: Schema.Attribute.String;
     button_url: Schema.Attribute.String;
+    button_url_2: Schema.Attribute.String;
     content: Schema.Attribute.RichText;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     subtitle: Schema.Attribute.String;

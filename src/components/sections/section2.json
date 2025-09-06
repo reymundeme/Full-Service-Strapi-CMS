@@ -39,6 +39,12 @@
     },
     "subtitle": {
       "type": "string"
+    },
+    "button_text_2": {
+      "type": "string"
+    },
+    "button_url_2": {
+      "type": "string"
     }
   },
   "config": {}
