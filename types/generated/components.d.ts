@@ -39,7 +39,7 @@ export interface SectionsItemContent extends Struct.ComponentSchema {
     buttonText: Schema.Attribute.String;
     buttonURL: Schema.Attribute.String;
     description: Schema.Attribute.RichText;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     title: Schema.Attribute.String;
   };
 }
@@ -50,6 +50,9 @@ export interface SectionsItemSection extends Struct.ComponentSchema {
     displayName: 'item-section';
   };
   attributes: {
+    background: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     item: Schema.Attribute.Component<'sections.item-content', true>;
     title: Schema.Attribute.String;
   };

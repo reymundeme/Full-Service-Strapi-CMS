@@ -12,6 +12,16 @@
       "type": "component",
       "component": "sections.item-content",
       "repeatable": true
+    },
+    "background": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   },
   "config": {}

@@ -11,7 +11,7 @@
     "description": {
       "type": "richtext"
     },
-    "image": {
+    "icon": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
