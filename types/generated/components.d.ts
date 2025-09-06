@@ -39,6 +39,7 @@ export interface SectionsItemContent extends Struct.ComponentSchema {
     buttonText: Schema.Attribute.String;
     buttonURL: Schema.Attribute.String;
     description: Schema.Attribute.RichText;
+    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     title: Schema.Attribute.String;
   };
 }
