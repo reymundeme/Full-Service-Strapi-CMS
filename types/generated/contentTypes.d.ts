@@ -399,6 +399,18 @@ export interface ApiChildPageChildPage extends Struct.CollectionTypeSchema {
     ogImage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     page: Schema.Attribute.Relation<'manyToOne', 'api::page.page'>;
     publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'sections.sections',
+        'sections.section2',
+        'sections.section1',
+        'sections.section-with-items',
+        'sections.item',
+        'sections.item-section',
+        'sections.item-content',
+        'sections.hero',
+      ]
+    >;
     seoDescription: Schema.Attribute.Text &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 160;
