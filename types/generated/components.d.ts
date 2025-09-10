@@ -117,6 +117,20 @@ export interface SectionsSections extends Struct.ComponentSchema {
   attributes: {};
 }
 
+export interface SectionsTextLeftSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_text_left_sections';
+  info: {
+    displayName: 'text-left-section';
+  };
+  attributes: {
+    background: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    content: Schema.Attribute.RichText;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SectionsTextSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_text_sections';
   info: {
@@ -142,6 +156,7 @@ declare module '@strapi/strapi' {
       'sections.section1': SectionsSection1;
       'sections.section2': SectionsSection2;
       'sections.sections': SectionsSections;
+      'sections.text-left-section': SectionsTextLeftSection;
       'sections.text-section': SectionsTextSection;
     }
   }

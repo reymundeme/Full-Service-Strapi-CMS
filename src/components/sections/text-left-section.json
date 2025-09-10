@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_sections_text_left_sections",
+  "info": {
+    "displayName": "text-left-section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "background": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "content": {
+      "type": "richtext"
+    }
+  },
+  "config": {}
+}
