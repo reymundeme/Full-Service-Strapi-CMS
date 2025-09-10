@@ -9,9 +9,6 @@
       "type": "string",
       "required": true
     },
-    "content": {
-      "type": "blocks"
-    },
     "background": {
       "type": "media",
       "multiple": false,
@@ -21,6 +18,9 @@
         "videos",
         "audios"
       ]
+    },
+    "content": {
+      "type": "richtext"
     }
   },
   "config": {}

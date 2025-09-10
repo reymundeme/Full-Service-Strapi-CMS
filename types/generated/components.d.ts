@@ -126,7 +126,7 @@ export interface SectionsTextSection extends Struct.ComponentSchema {
     background: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
-    content: Schema.Attribute.Blocks;
+    content: Schema.Attribute.RichText;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
