@@ -57,7 +57,9 @@
         "sections.section2",
         "sections.section1",
         "sections.item-section",
-        "sections.hero"
+        "sections.hero",
+        "sections.text-section",
+        "sections.text-left-section"
       ]
     }
   }

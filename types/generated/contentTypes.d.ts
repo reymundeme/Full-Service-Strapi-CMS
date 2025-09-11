@@ -405,6 +405,8 @@ export interface ApiChildPageChildPage extends Struct.CollectionTypeSchema {
         'sections.section1',
         'sections.item-section',
         'sections.hero',
+        'sections.text-section',
+        'sections.text-left-section',
       ]
     >;
     seoDescription: Schema.Attribute.Text &
