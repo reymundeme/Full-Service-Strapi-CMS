@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_sections_item_columns",
+  "collectionName": "components_sections_column_item_sections",
   "info": {
-    "displayName": "item-column-section"
+    "displayName": "column_item_section"
   },
   "options": {},
   "attributes": {
@@ -18,7 +18,7 @@
         "audios"
       ]
     },
-    "item_column_content": {
+    "column_item_section": {
       "type": "component",
       "component": "sections.column-item-content",
       "repeatable": true

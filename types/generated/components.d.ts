@@ -12,6 +12,23 @@ export interface SectionsColumnItemContent extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsColumnItemSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_column_item_sections';
+  info: {
+    displayName: 'column_item_section';
+  };
+  attributes: {
+    background: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    column_item_section: Schema.Attribute.Component<
+      'sections.column-item-content',
+      true
+    >;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SectionsHero extends Struct.ComponentSchema {
   collectionName: 'components_sections_heroes';
   info: {
@@ -38,23 +55,6 @@ export interface SectionsItem extends Struct.ComponentSchema {
     ButtonURL: Schema.Attribute.String;
     description: Schema.Attribute.RichText;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    title: Schema.Attribute.String;
-  };
-}
-
-export interface SectionsItemColumn extends Struct.ComponentSchema {
-  collectionName: 'components_sections_item_columns';
-  info: {
-    displayName: 'item-column-section';
-  };
-  attributes: {
-    background: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    item_column_content: Schema.Attribute.Component<
-      'sections.column-item-content',
-      true
-    >;
     title: Schema.Attribute.String;
   };
 }
@@ -178,9 +178,9 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'sections.column-item-content': SectionsColumnItemContent;
+      'sections.column-item-section': SectionsColumnItemSection;
       'sections.hero': SectionsHero;
       'sections.item': SectionsItem;
-      'sections.item-column': SectionsItemColumn;
       'sections.item-content': SectionsItemContent;
       'sections.item-section': SectionsItemSection;
       'sections.section-with-items': SectionsSectionWithItems;
