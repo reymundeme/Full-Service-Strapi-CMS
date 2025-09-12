@@ -30,6 +30,20 @@ export interface SectionsItem extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsItemColumn extends Struct.ComponentSchema {
+  collectionName: 'components_sections_item_columns';
+  info: {
+    displayName: 'item-column';
+  };
+  attributes: {
+    background: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    item_content: Schema.Attribute.Component<'sections.item-content', true>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SectionsItemContent extends Struct.ComponentSchema {
   collectionName: 'components_sections_item_contents';
   info: {
@@ -150,6 +164,7 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'sections.hero': SectionsHero;
       'sections.item': SectionsItem;
+      'sections.item-column': SectionsItemColumn;
       'sections.item-content': SectionsItemContent;
       'sections.item-section': SectionsItemSection;
       'sections.section-with-items': SectionsSectionWithItems;
