@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_sections_item_columns",
+  "info": {
+    "displayName": "item-column-section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "background": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "item_column_content": {
+      "type": "component",
+      "component": "sections.column-item-content",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
