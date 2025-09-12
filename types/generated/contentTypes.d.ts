@@ -459,6 +459,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.item-section',
         'sections.text-section',
         'sections.text-left-section',
+        'sections.column-item-section',
       ]
     >;
     seoDescription: Schema.Attribute.Text &

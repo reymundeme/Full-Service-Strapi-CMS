@@ -59,7 +59,8 @@
         "sections.section2",
         "sections.item-section",
         "sections.text-section",
-        "sections.text-left-section"
+        "sections.text-left-section",
+        "sections.column-item-section"
       ]
     }
   }
