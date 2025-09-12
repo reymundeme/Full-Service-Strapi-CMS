@@ -18,7 +18,7 @@
         "audios"
       ]
     },
-    "column_item_section": {
+    "column_item_content": {
       "type": "component",
       "component": "sections.column-item-content",
       "repeatable": true

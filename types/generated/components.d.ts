@@ -21,7 +21,7 @@ export interface SectionsColumnItemSection extends Struct.ComponentSchema {
     background: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
-    column_item_section: Schema.Attribute.Component<
+    column_item_content: Schema.Attribute.Component<
       'sections.column-item-content',
       true
     >;
