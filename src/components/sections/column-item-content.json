@@ -1,14 +1,14 @@
 {
-  "collectionName": "components_sections_item_columns",
+  "collectionName": "components_sections_column_item_contents",
   "info": {
-    "displayName": "item-column-section"
+    "displayName": "column_item_content"
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string"
     },
-    "background": {
+    "image": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
@@ -18,10 +18,8 @@
         "audios"
       ]
     },
-    "item_column_content": {
-      "type": "component",
-      "component": "sections.column-item-content",
-      "repeatable": true
+    "short_description": {
+      "type": "string"
     }
   },
   "config": {}

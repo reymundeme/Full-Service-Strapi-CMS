@@ -1,5 +1,17 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface SectionsColumnItemContent extends Struct.ComponentSchema {
+  collectionName: 'components_sections_column_item_contents';
+  info: {
+    displayName: 'column_item_content';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    short_description: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SectionsHero extends Struct.ComponentSchema {
   collectionName: 'components_sections_heroes';
   info: {
@@ -33,13 +45,16 @@ export interface SectionsItem extends Struct.ComponentSchema {
 export interface SectionsItemColumn extends Struct.ComponentSchema {
   collectionName: 'components_sections_item_columns';
   info: {
-    displayName: 'item-column';
+    displayName: 'item-column-section';
   };
   attributes: {
     background: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
-    item_content: Schema.Attribute.Component<'sections.item-content', true>;
+    item_column_content: Schema.Attribute.Component<
+      'sections.column-item-content',
+      true
+    >;
     title: Schema.Attribute.String;
   };
 }
@@ -162,6 +177,7 @@ export interface SectionsTextSection extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'sections.column-item-content': SectionsColumnItemContent;
       'sections.hero': SectionsHero;
       'sections.item': SectionsItem;
       'sections.item-column': SectionsItemColumn;
