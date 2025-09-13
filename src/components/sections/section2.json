@@ -37,9 +37,6 @@
     "title": {
       "type": "string"
     },
-    "subtitle": {
-      "type": "string"
-    },
     "button_text_2": {
       "type": "string"
     },
