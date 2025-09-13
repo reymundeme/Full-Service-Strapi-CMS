@@ -114,7 +114,6 @@ export interface SectionsSection1 extends Struct.ComponentSchema {
     button_url_2: Schema.Attribute.String;
     content: Schema.Attribute.RichText;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    subtitle: Schema.Attribute.String;
     title: Schema.Attribute.String;
   };
 }
