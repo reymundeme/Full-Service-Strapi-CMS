@@ -20,6 +20,9 @@
     },
     "short_description": {
       "type": "string"
+    },
+    "URL": {
+      "type": "string"
     }
   },
   "config": {}

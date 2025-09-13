@@ -9,6 +9,7 @@ export interface SectionsColumnItemContent extends Struct.ComponentSchema {
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     short_description: Schema.Attribute.String;
     title: Schema.Attribute.String;
+    URL: Schema.Attribute.String;
   };
 }
 
