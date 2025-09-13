@@ -41,7 +41,7 @@ export interface SectionsHero extends Struct.ComponentSchema {
     >;
     ButtonText: Schema.Attribute.String;
     ButtonURL: Schema.Attribute.String;
-    Subtitle: Schema.Attribute.String;
+    Subtitle: Schema.Attribute.Text;
     Title: Schema.Attribute.String;
   };
 }
