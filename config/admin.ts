@@ -2,49 +2,43 @@ export default ({ env }) => ({
   auth: {
     secret: env('ADMIN_JWT_SECRET'),
   },
-  apiToken: {
-    salt: env('API_TOKEN_SALT'),
-  },
-  transfer: {
-    token: {
-      salt: env('TRANSFER_TOKEN_SALT'),
-    },
-  },
-  secrets: {
-    encryptionKey: env('ENCRYPTION_KEY'),
-  },
+  apiToken: { salt: env('API_TOKEN_SALT') },
+  transfer: { token: { salt: env('TRANSFER_TOKEN_SALT') } },
+  secrets: { encryptionKey: env('ENCRYPTION_KEY') },
   flags: {
     nps: env.bool('FLAG_NPS', true),
     promoteEE: env.bool('FLAG_PROMOTE_EE', true),
   },
 
-  // 👇 Preview configuration
   preview: {
     enabled: true,
     config: {
-      allowedOrigins: ['http://104.248.127.3'], // e.g. http://localhost:3000
+      allowedOrigins: [env('CLIENT_URL') || 'http://104.248.127.3'],
       async handler(uid, { documentId }) {
-        const document = await strapi.documents(uid).findOne({ documentId });
+        if (!documentId) {
+          // ⚠ Always return a fallback URL
+          return env('PREVIEW_URL') || 'http://104.248.127.3';
+        }
 
-        // ✅ Handle Pages
+        const document = await strapi.documents(uid).findOne({ documentId });
+        if (!document) {
+          return env('PREVIEW_URL') || 'http://104.248.127.3';
+        }
+
+        // Pages
         if (uid === 'api::page.page') {
           const slug = document.slug === 'home' ? '/' : `/${document.slug}`;
           return `${env('PREVIEW_URL')}/api/preview?secret=${env('NEXT_PREVIEW_SECRET')}&slug=${slug}`;
         }
 
-        // ✅ Handle Child-pages (industries/[slug])
+        // Child-pages (industries/[slug])
         if (uid === 'api::child-page.child-page') {
           const slug = `/industries/${document.slug}`;
           return `${env('PREVIEW_URL')}/api/preview?secret=${env('NEXT_PREVIEW_SECRET')}&slug=${slug}`;
         }
 
-        // ✅ Handle Articles (optional)
-        if (uid === 'api::article.article') {
-          return `${env('PREVIEW_URL')}/api/preview?secret=${env('NEXT_PREVIEW_SECRET')}&slug=/articles/${document.slug}`;
-        }
-
         // Default fallback
-        return 'http://104.248.127.3';
+        return env('PREVIEW_URL') || 'http://104.248.127.3';
       },
     },
   },
