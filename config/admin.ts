@@ -1,39 +1,29 @@
 export default ({ env }) => ({
-  // ...existing code...
+  auth: { secret: env('ADMIN_JWT_SECRET') },
+  apiToken: { salt: env('API_TOKEN_SALT') },
+  transfer: { token: { salt: env('TRANSFER_TOKEN_SALT') } },
+  secrets: { encryptionKey: env('ENCRYPTION_KEY') },
+  flags: { nps: env.bool('FLAG_NPS', true), promoteEE: env.bool('FLAG_PROMOTE_EE', true) },
+
   preview: {
     enabled: true,
     config: {
       allowedOrigins: [env('CLIENT_URL') || 'http://104.248.127.3'],
       async handler(uid, { documentId }) {
+        // Always return a URL string
         const fallbackUrl = env('PREVIEW_URL') || 'http://104.248.127.3';
 
-        if (!documentId) {
-          console.warn('Preview: no documentId provided', { uid, documentId });
-          return fallbackUrl;
-        }
+        if (!documentId) return fallbackUrl;
 
         let document;
         try {
-          // Normalize id
-          const id = Number(documentId) || documentId;
-
-          // Prefer entityService (Strapi v4). Fallback to db.query if needed.
-          if (strapi.entityService && typeof strapi.entityService.findOne === 'function') {
-            document = await strapi.entityService.findOne(uid, id, { populate: '*' });
-          } else if (strapi.db && typeof strapi.db.query === 'function') {
-            document = await strapi.db.query(uid).findOne({ where: { id }, populate: '*' });
-          } else {
-            throw new Error('No supported fetch API available on strapi object');
-          }
+          document = await strapi.documents(uid).findOne({ documentId });
         } catch (err) {
-          console.error('Preview handler error:', err, { uid, documentId });
+          console.error('Preview handler error:', err);
           return fallbackUrl;
         }
 
-        if (!document) {
-          console.warn('Preview: document not found', { uid, documentId });
-          return fallbackUrl;
-        }
+        if (!document) return fallbackUrl;
 
         if (uid === 'api::page.page') {
           const slug = document.slug === 'home' ? '/' : `/${document.slug}`;
@@ -49,5 +39,4 @@ export default ({ env }) => ({
       },
     },
   },
-  // ...existing code...
 });
