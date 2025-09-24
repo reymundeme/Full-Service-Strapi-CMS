@@ -10,23 +10,32 @@ export default ({ env }) => ({
     config: {
       allowedOrigins: [env('CLIENT_URL') || 'http://104.248.127.3'],
       async handler(uid, { documentId }) {
-        if (!documentId) return env('PREVIEW_URL') || 'http://104.248.127.3';
+        // Always return a URL string
+        const fallbackUrl = env('PREVIEW_URL') || 'http://104.248.127.3';
 
-        const document = await strapi.documents(uid).findOne({ documentId });
-        if (!document) return env('PREVIEW_URL') || 'http://104.248.127.3';
+        if (!documentId) return fallbackUrl;
+
+        let document;
+        try {
+          document = await strapi.documents(uid).findOne({ documentId });
+        } catch (err) {
+          console.error('Preview handler error:', err);
+          return fallbackUrl;
+        }
+
+        if (!document) return fallbackUrl;
 
         if (uid === 'api::page.page') {
           const slug = document.slug === 'home' ? '/' : `/${document.slug}`;
-          return `${env('PREVIEW_URL')}/api/preview?secret=${env('NEXT_PREVIEW_SECRET')}&slug=${slug}`;
+          return `${fallbackUrl}/api/preview?secret=${env('NEXT_PREVIEW_SECRET')}&slug=${slug}`;
         }
 
         if (uid === 'api::child-page.child-page') {
           const slug = `/industries/${document.slug}`;
-          return `${env('PREVIEW_URL')}/api/preview?secret=${env('NEXT_PREVIEW_SECRET')}&slug=${slug}`;
+          return `${fallbackUrl}/api/preview?secret=${env('NEXT_PREVIEW_SECRET')}&slug=${slug}`;
         }
 
-        // fallback
-        return env('PREVIEW_URL') || 'http://104.248.127.3';
+        return fallbackUrl;
       },
     },
   },
