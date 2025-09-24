@@ -22,7 +22,7 @@ export default ({ env }) => ({
   preview: {
     enabled: true,
     config: {
-      allowedOrigins: [env('CLIENT_URL')], // e.g. http://localhost:3000
+      allowedOrigins: ['http://104.248.127.3'], // e.g. http://localhost:3000
       async handler(uid, { documentId }) {
         const document = await strapi.documents(uid).findOne({ documentId });
 
@@ -44,7 +44,7 @@ export default ({ env }) => ({
         }
 
         // Default fallback
-        return env('PREVIEW_URL');
+        return 'http://104.248.127.3';
       },
     },
   },
