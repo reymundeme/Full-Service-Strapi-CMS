@@ -8,10 +8,10 @@ export default ({ env }) => ({
   preview: {
     enabled: true,
     config: {
-      allowedOrigins: [env('CLIENT_URL') || 'http://104.248.127.3'],
+      allowedOrigins: [env('CLIENT_URL') || '104.248.127.3'],
       async handler(uid, { documentId }) {
         // Always return a URL string
-        const fallbackUrl = env('PREVIEW_URL') || 'http://104.248.127.3';
+        const fallbackUrl = env('PREVIEW_URL') || '104.248.127.3';
 
         if (!documentId) return fallbackUrl;
 
