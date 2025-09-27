@@ -14,7 +14,7 @@ module.exports = [
           'script-src': ["'self'", 'https:', "'unsafe-inline'"],
           'style-src': ["'self'", 'https:', "'unsafe-inline'"],
           'font-src': ["'self'", 'https:', 'data:'],
-          'frame-src': ["'self'", 'http://104.248.127.3', 'https://precious-dinosaur-99506b8ce1.strapiapp.com'], // Add your domain and IP here
+          'frame-src': ["'self'", 'http://104.248.127.3', 'https://104.248.127.3', 'https://precious-dinosaur-99506b8ce1.strapiapp.com'], // Add your domain and IP here
           'upgradeInsecureRequests': null,
         },
       },
