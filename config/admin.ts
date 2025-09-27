@@ -5,38 +5,28 @@ export default ({ env }) => ({
   secrets: { encryptionKey: env('ENCRYPTION_KEY') },
   flags: { nps: env.bool('FLAG_NPS', true), promoteEE: env.bool('FLAG_PROMOTE_EE', true) },
 
-  preview: {
-    enabled: true,
-    config: {
-      allowedOrigins: [env('CLIENT_URL') || '104.248.127.3'],
-      async handler(uid, { documentId }) {
-        // Always return a URL string
-        const fallbackUrl = env('PREVIEW_URL') || '104.248.127.3';
+preview: {
+  enabled: true,
+  config: {
+    allowedOrigins: [env('CLIENT_URL') || 'http://104.248.127.3'],
+    async handler(uid, { documentId }) {
+      if (!documentId) return env('PREVIEW_URL') || 'http://104.248.127.3';
 
-        if (!documentId) return fallbackUrl;
+      const document = await strapi.documents(uid).findOne({ documentId });
+      if (!document) return env('PREVIEW_URL') || 'http://104.248.127.3';
 
-        let document;
-        try {
-          document = await strapi.documents(uid).findOne({ documentId });
-        } catch (err) {
-          console.error('Preview handler error:', err);
-          return fallbackUrl;
-        }
+      if (uid === 'api::page.page') {
+        const slug = document.slug === 'home' ? '/' : `/${document.slug}`;
+        return `${env('PREVIEW_URL')}/api/preview?secret=${env('NEXT_PREVIEW_SECRET')}&slug=${slug}`;
+      }
 
-        if (!document) return fallbackUrl;
+      if (uid === 'api::child-page.child-page') {
+        const slug = `/industries/${document.slug}`;
+        return `${env('PREVIEW_URL')}/api/preview?secret=${env('NEXT_PREVIEW_SECRET')}&slug=${slug}`;
+      }
 
-        if (uid === 'api::page.page') {
-          const slug = document.slug === 'home' ? '/' : `/${document.slug}`;
-          return `${fallbackUrl}/api/preview?secret=${env('NEXT_PREVIEW_SECRET')}&slug=${slug}`;
-        }
-
-        if (uid === 'api::child-page.child-page') {
-          const slug = `/industries/${document.slug}`;
-          return `${fallbackUrl}/api/preview?secret=${env('NEXT_PREVIEW_SECRET')}&slug=${slug}`;
-        }
-
-        return fallbackUrl;
-      },
+      return env('PREVIEW_URL') || 'http://104.248.127.3';
     },
   },
+},
 });
